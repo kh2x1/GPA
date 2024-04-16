@@ -1,0 +1,406 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+    .content {
+        display: grid;
+        place-items: center;
+        gap: 5px;
+        margin-top: 20%;
+    }
+
+    .inputs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        direction: rtl;
+    }
+
+    
+
+    .Table {
+        display: grid;
+        place-items: center;
+        margin-top: 20px;
+    }
+
+
+    .Table th {
+        border: 2px solid black;
+    }
+
+    .Table td {
+        border: 2px solid black;
+        padding: 18px;
+    }
+
+    
+
+</style>
+</head>
+<body>
+
+
+
+    #حساب المعدل الفصلي#
+    1- ضرب عدد ساعات كل مادة * الوزن التقديري = نقاط المادة
+    2- جمع عدد النقاط 
+    3- جمع عدد الساعات 
+    4- اقسم عدد النقاط على عدد الساعات 
+
+
+<div class="content">
+    <div class="inputs">
+
+        <input type="text" id="name" placeholder="اسم المادة" dir="rtl"> <br>
+        <input type="number" id="hours" placeholder="الساعات" dir="rtl" maxlength="1"> <br>
+        <select id="grade">
+            <option>الدرجة</option>
+            <option value="5" >A+</option>
+            <option value="4.75" >A</option>
+            <option value="4.5" >B+</option>
+            <option value="4" >B</option>
+            <option value="3.5" >C+</option>
+            <option value="3" >C</option>
+            <option value="2.5" >D+</option>
+            <option value="2" >D</option>
+            <option value="1" >F</option>
+        </select> <br>
+
+    </div>
+
+        <label id="value"></label> <br>
+        <label id="Points"></label> <br>
+        <label id="total">Total Points = 0</label> <br>
+
+        <label id="Hou"></label> <br>
+        <label id="totalHours">Total Hours = 0</label> <br>
+
+        <label id="GPA">المعدل الفصلي = 0</label> <br>
+        <input type="submit" id="sub">
+</div>
+
+
+
+
+
+<input type="button" value="Add to Table" onclick="MyFun()">
+<table class="Table">
+    <tr>
+        <th>Subject</th>
+        <th>Hours</th>
+        <th>Grade</th>
+    </tr>
+</table>
+
+<script>
+    
+
+
+    // initial value to store the total when increament
+    document.getElementById('total').value = 0;
+    document.getElementById('totalHours').value = 0;
+
+    
+
+    document.getElementById('sub').onclick=function() {
+        var name = document.getElementById('name').value;
+        document.getElementById('value').innerHTML=name;
+
+        var hours = document.getElementById('hours').value;
+        var grade = document.getElementById('grade').value;
+
+
+
+
+        // var PrintGrade = document.getElementById('PrintGrade').value;
+        // document.getElementById('PrintGrade').innerText = Number(PrintGrade);
+
+
+        Points = Number(hours) * Number(grade)
+
+        //Points
+        var p = document.getElementById('Points').value = Points
+        // we need to put + befor the = to sum the Points
+        var Tp = document.getElementById('total').value +=p
+        document.getElementById('Points').innerHTML = p
+        document.getElementById('total').innerText = `Total Points = ${Tp} `
+
+        //Hours
+        document.getElementById('Hou').innerHTML = hours
+        var Th = document.getElementById('totalHours').value +=Number(hours)
+        document.getElementById('totalHours').innerText = `Total Hours = ${Th} `
+
+        var GPA = Number(Tp) / Number(Th)
+        //toFixed(2) عشان اخذ رقمين فقط بعد الفاصلة
+        // document.getElementById('GPA').innerText =`المعدل الفصلي = ${GPA.toFixed(2)}` 
+        
+        var newDiv = document.createElement("div")
+        var tb = document.querySelector('.Table');
+        var row = document.createElement("tr")
+        var cell1 = document.createElement("td");
+        row.appendChild(cell1)
+        cell1.innerHTML = name;
+        var cell2 = document.createElement("td");
+        row.appendChild(cell2)
+        cell2.innerHTML = hours;
+        var cell3 = document.createElement("td");
+        row.appendChild(cell3)
+        var gr = document.getElementById('grade');
+        //to select the text that is in the option
+        var textOption = gr.options[gr.selectedIndex].text;
+        cell3.innerHTML=textOption;
+
+        tb.appendChild(row)
+        
+
+        var h2 = document.createElement("h2")
+        document.body.appendChild(h2)
+        
+        h2.innerText = `المعدل الفصلي = ${GPA.toFixed(2)}`
+        h2.style.display = "grid"
+        h2.style.placeItems = "center"
+        
+    }
+
+    // function MyFun() {
+        
+    // }
+
+//    const add = document.getElementById('add');
+
+//    add.addEventListener('click',AddNew)
+
+//    function AddNew() {
+//     const newDiv = document.createElement("div");
+//     const Table = document.createElement("table");
+
+//     document.body.appendChild(newDiv);
+//     newDiv.appendChild(Table);
+//     document.createElement("tr");
+    
+//    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احسب معدلك</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <style>
+        * {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: rgba(255, 255, 255, 0.804);
+        }
+
+        .content {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            gap: 5px;
+            width: 100%;
+            margin-top: 5%;
+        }
+
+        .content > .DivTable {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .inputs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            direction: rtl;
+        }
+
+        .content > .inputs > form > #name {
+            padding: 10px;
+            width: 90%;
+            border-radius: 5px;
+        }
+
+        .content > .inputs > form > #hours {
+            padding: 10px;
+            width: 90%;
+            margin-top: 8px;
+            border-radius: 5px;
+        }
+
+        .content > .inputs > form > #grade {
+            padding: 10px;
+            font-weight: bold;
+            margin: 8px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .content > .inputs > form {
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            height: 30vh;
+            box-shadow: 0px 0px 0px 3px darkslategray;
+        }
+
+        .content > .DivTable > .Table {
+            border-collapse:collapse;
+            margin-top: 20px;
+            width: 100%;
+            direction: rtl;
+        }
+
+        .Table th {
+            border: 2px solid darkslategray;
+            padding: 10px;
+            font-weight: bolder;
+            font-size: 1.2rem;
+            background-color: rgb(42, 42, 42);
+            color: white;
+        }
+
+        .Table td {
+            border: 2px solid darkslategray;
+            padding: 18px;
+            background-color: rgb(50, 50, 50);
+            color: white;
+            text-align: center;
+        }
+
+        
+        .content > .DivSub {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .content > .DivHours {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .content > .DivHours > label {
+            font-weight: 600;
+        }
+
+        .content > .DivSub > input {
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1rem;
+            border: none;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+            width: 15wh;
+            cursor: pointer;
+        }
+
+        .content > .DivRes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Calculate the semester GPA -->
+    <div class="content">
+        <div class="inputs">
+            <form>
+                <input type="text" id="name" placeholder="اسم المادة" dir="rtl"> <br>
+                <input type="number" id="hours" placeholder="الساعات" dir="rtl" maxlength="1"> <br>
+                <select id="grade">
+                    <option>الدرجة</option>
+                    <option value="5">A+</option>
+                    <option value="4.75">A</option>
+                    <option value="4.5">B+</option>
+                    <option value="4">B</option>
+                    <option value="3.5">C+</option>
+                    <option value="3">C</option>
+                    <option value="2.5">D+</option>
+                    <option value="2">D</option>
+                    <option value="1">F</option>
+                </select>
+
+                <div class="DivRes">
+                    <h2 id="GPA">المعدل الفصلي = 0</h2>
+                </div>
+            </form>
+    </div>
+
+    <div class="DivSub">
+        <input type="submit" id="sub">
+    </div>
+
+        <!-- <label id="value"></label> <br> -->
+        <label id="Points" style="display: none;"></label>
+        <label id="total" style="display: none;">Total Points = 0</label>
+
+        <label id="Hou" style="display: none;"></label>
+
+        <div class="DivTable">
+            <table class="Table">
+                <tr>
+                    <th>المادة</th>
+                    <th>الساعات</th>
+                    <th>الدرجة</th> 
+                </tr>
+            </table>
+        </div>
+
+        <div class="DivHours">
+            <label id="totalHours" style="display: block;">Total Hours = 0</label> <br>
+        </div>
+
+
+        
+        
+        
+    </div>
+
+    <!-- Add subjects to the table -->
+    <!-- <input type="button" value="Add to Table" onclick="MyFun()"> -->
+    
+
+    <!-- JavaScript code -->
+
+    <script src="script.js"></script>
+</body>
+</html>
