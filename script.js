@@ -2,10 +2,10 @@
 document.getElementById('total').textContent = 'Total Points = 0';
 document.getElementById('totalHours').textContent = 'Total Hours = 0';
 
+
 document.getElementById('sub').onclick = function() {
     var name = document.getElementById('name').value;
     // document.getElementById('value').textContent = name;
-
     var hours = document.getElementById('hours').value;
     var grade = document.getElementById('grade').value;
 
@@ -28,12 +28,26 @@ document.getElementById('sub').onclick = function() {
     var table = document.querySelector('.Table');
     var row = table.insertRow(-1);
     var cell1 = row.insertCell(0);
-    cell1.innerHTML = name;
+    var v1 = cell1.innerHTML = name;
     var cell2 = row.insertCell(1);
-    cell2.innerHTML = hours;
+    var v2 = cell2.innerHTML = hours;
     var cell3 = row.insertCell(2);
     //to select the text that is in the option
     var gr = document.getElementById('grade');
     var textOption = gr.options[gr.selectedIndex].text;
-    cell3.innerHTML=textOption;
+    localStorage.setItem("v3",textOption);
+    var v3 = cell3.innerHTML=localStorage.getItem("v3");
+
+    localStorage.setItem("v1",v1)
+    localStorage.setItem("v1", JSON.stringify(v1));
+    localStorage.setItem("v2",v2)
+    localStorage.setItem("v2", JSON.stringify(v2));
+    localStorage.setItem("v3",v3)
 }
+
+document.getElementById("sub").addEventListener("click",function(){
+    document.getElementById('name').value="";
+    document.getElementById('hours').value="";
+    document.getElementById("grade").value="الدرجة";
+
+})
