@@ -220,13 +220,26 @@
             background-color: rgba(255, 255, 255, 0.804);
         }
 
+        .title {
+            display: flex;
+            width: 100%;
+        }
+
+        .title > h1 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bolder;
+            font-size: 2rem;
+        }
+
         .content {
             display: block;
             margin-left: auto;
             margin-right: auto;
             gap: 5px;
             width: 100%;
-            margin-top: 5%;
+            margin-top: 2%;
         }
 
         .content > .DivTable {
@@ -265,6 +278,8 @@
             margin-right: auto;
             width: 100%;
             border-radius: 5px;
+            background-color: black;
+            color: white;
         }
 
         .content > .inputs > form {
@@ -318,16 +333,28 @@
             font-weight: 600;
         }
 
+        .content > .inputs > form > .DivSub {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .content > .DivSub > input {
-            padding: 20px;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.1rem;
             border: none;
             background-color: black;
             color: white;
             border-radius: 10px;
-            width: 15wh;
             cursor: pointer;
+            padding: 20px;
+            width: 10wh;
+        }
+
+        .content > .DivSub > input:active {
+            background-color: white;
+            color: black;
+            border: 3px solid black;
         }
 
         .content > .DivRes {
@@ -348,6 +375,9 @@
 <body>
 
     <!-- Calculate the semester GPA -->
+    <div class="title">
+        <h1>احسب معدلك</h1>
+    </div>
     <div class="content">
         <div class="inputs">
             <form>
@@ -369,12 +399,16 @@
                 <div class="DivRes">
                     <h2 id="GPA">المعدل الفصلي = 0</h2>
                 </div>
+
+                
             </form>
     </div>
 
     <div class="DivSub">
         <input type="submit" id="sub">
     </div>
+
+    
 
         <!-- <label id="value"></label> <br> -->
         <label id="Points" style="display: none;"></label>
@@ -407,10 +441,12 @@
             <h4>&copy; KHALLAD 2024</h4>
 
     </footer>
-    
-    <!-- JavaScript code -->
 
+    <!-- Add subjects to the table -->
+    <!-- <input type="button" value="Add to Table" onclick="MyFun()"> -->
     
+
+    <!-- JavaScript code -->
 
     <script src="script.js"></script>
 </body>
