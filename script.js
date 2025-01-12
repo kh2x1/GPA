@@ -35,14 +35,7 @@ document.getElementById('sub').onclick = function() {
     //to select the text that is in the option
     var gr = document.getElementById('grade');
     var textOption = gr.options[gr.selectedIndex].text;
-    localStorage.setItem("v3",textOption);
-    var v3 = cell3.innerHTML=localStorage.getItem("v3");
-
-    localStorage.setItem("v1",v1)
-    localStorage.setItem("v1", JSON.stringify(v1));
-    localStorage.setItem("v2",v2)
-    localStorage.setItem("v2", JSON.stringify(v2));
-    localStorage.setItem("v3",v3)
+    var v3 = cell3.innerHTML = textOption;
 }
 
 document.getElementById("sub").addEventListener("click",function(){
